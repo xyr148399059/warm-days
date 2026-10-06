@@ -2,11 +2,13 @@
 
 一个中文经期关照小工具：记录周期，在经前 7 天和经期中查看饮食建议，并将提醒导入手机日历。
 
+**[立即在线使用](https://xyr148399059.github.io/warm-days/)** · **[下载完整代码](https://github.com/xyr148399059/warm-days/archive/refs/heads/main.zip)**
+
 ![暖期饮食建议预览](docs/preview.jpg)
 
 ## 如何使用
 
-在线版发布后，可从本仓库右侧 **About → Website** 打开。无需账号，也无需安装。
+打开上方“立即在线使用”，或者从仓库右侧 **About → Website** 打开。无需账号，也无需安装。
 
 1. 填写最近一次经期第一天、平均周期、通常持续天数和提醒时间，然后保存。
 2. 切换“经前 7 天 / 经期中”，查看饮料、汤食、水果共 15 种建议。点击名称展开做法和注意事项。
@@ -53,6 +55,8 @@ npm start
 ## GitHub Pages 发布
 
 本仓库已经包含自动发布配置 `.github/workflows/pages.yml`。
+
+本仓库的在线发布已经配置好。以下步骤供复制项目到自己的仓库时参考。
 
 1. 上传到公开 GitHub 仓库，默认分支设为 `main`。
 2. 在 **Settings → Pages → Build and deployment → Source** 中选择 **GitHub Actions**。
