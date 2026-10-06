@@ -1,0 +1,11 @@
+{
+  "name": "warm-days",
+  "version": "1.0.0",
+  "private": true,
+  "description": "暖期：经前七天与经期中的饮食建议和日历提醒",
+  "scripts": {
+    "start": "node scripts/serve.cjs",
+    "test": "node --test test/calendar.cjs"
+  },
+  "engines": {"node": ">=20"}
+}

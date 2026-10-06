@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#be2452"><meta name="description" content="设置经期日期，在预计经期前七天收到饮食习惯提醒，并导出手机日历。">
+  <title>暖期 · 经前七天提醒</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23be2452'/%3E%3Cpath d='M12 25V15m8 10V11m8 14V15' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css"><script src="suggestions.js" defer></script><script src="logic.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<div class="shell">
+  <header><a class="brand" href="./" aria-label="暖期首页"><span class="brand-mark">∿</span>暖期<span class="brand-en">WARM DAYS</span></a><span class="privacy">仅存于此设备</span></header>
+  <main>
+    <div class="page-title"><div><p class="eyebrow">给自己的七天关照</p><h1>提前一点，照顾自己。</h1></div><p id="today-label" class="today"></p></div>
+    <div class="workspace">
+      <section class="overview" aria-labelledby="status-title">
+        <div class="overview-top"><span class="pill" id="phase">还没有设置周期</span><span class="small">经前提醒</span></div>
+        <h2 id="status-title">先记下经期日期</h2><p class="status-copy" id="status-copy">设置后，这里会告诉你什么时候开始提醒。</p>
+        <div class="countdown"><strong id="countdown">—</strong><span id="countdown-label">天<br>距离预计经期</span></div>
+        <div class="milestones"><div><span>提醒开始</span><strong id="reminder-date">待设置</strong></div><div><span>预计经期</span><strong id="period-date">待设置</strong></div></div>
+        <div class="seven-days" id="seven-days" aria-label="经前七天提醒窗口"></div>
+        <p class="prediction-note">日期按周期估算，实际来经后请更新记录。</p>
+      </section>
+      <section class="settings" aria-labelledby="settings-title">
+        <div class="section-heading"><span class="section-index">01 / 周期</span><h2 id="settings-title">你的周期，由你记录</h2></div>
+        <form id="settings-form">
+          <label for="last-period">最近一次经期第一天</label><input id="last-period" type="date" required>
+          <div class="field-row"><div><label for="cycle">平均周期</label><div class="number-field"><input id="cycle" type="number" min="15" max="90" value="28" required><span>天</span></div></div><div><label for="time">每天提醒时间</label><input id="time" type="time" value="09:00" required></div></div>
+          <div class="duration-field"><label for="duration">通常持续几天</label><div class="number-field"><input id="duration" type="number" min="1" max="14" value="5" required><span>天</span></div></div>
+          <p class="field-help">周期指两次经期第一天之间的天数。提醒时间采用北京时间。</p>
+          <button class="primary" type="submit">保存周期设置</button><p id="save-status" class="save-status" role="status" aria-live="polite">尚未保存经期日期</p>
+        </form>
+      </section>
+    </div>
+    <section class="recommendations" aria-labelledby="recommendations-title">
+      <div class="care-heading"><div><p class="section-index">02 / 吃喝建议</p><h2 id="recommendations-title">今天，吃点让自己舒服的</h2></div></div>
+      <div class="stage-tabs" role="tablist" aria-label="选择饮食建议阶段"><button type="button" id="tab-pre" role="tab" aria-selected="true" aria-controls="suggestion-panel" data-stage="pre">经前 7 天</button><button type="button" id="tab-during" role="tab" aria-selected="false" aria-controls="suggestion-panel" tabindex="-1" data-stage="during">经期中</button></div>
+      <div id="suggestion-panel" role="tabpanel" aria-labelledby="tab-pre" tabindex="0"><p id="stage-description" class="stage-description">规律吃饭，选择舒服的温度；不需要提前大量进补。</p><div class="daily-pairing"><span id="pairing-label">一份可选搭配</span><strong id="daily-pairing"></strong><p>任选喜欢的一项也可以，不用照单全吃。水果会参考你的个人少吃清单。</p></div><div id="suggestion-grid" class="suggestion-grid"></div></div>
+      <p class="suggestion-footnote">这些是普通饮食灵感，两个阶段都可按喜好选择。“微补”以正常吃饭、均衡搭配为主，不需要额外药膳或大量红糖。</p>
+      <details class="evidence-details"><summary>这些建议的依据与边界</summary><p>姜相关研究主要涉及补充剂，不能直接等同于自制姜茶；姜也可能引起烧心或胃部不适。水果和汤食用于丰富普通饮食，不是痛经治疗。</p><div class="source-links"><a href="https://www.nccih.nih.gov/health/ginger" target="_blank" rel="noopener noreferrer">NCCIH：姜的研究与安全性</a><a href="https://www.healthhub.sg/well-being-and-lifestyle/food-diet-and-nutrition/fun-fruity-facts" target="_blank" rel="noopener noreferrer">HealthHub：水果与榴莲份量</a><a href="https://www.healthhub.sg/well-being-and-lifestyle/food-diet-and-nutrition/you-are-what-you-eat" target="_blank" rel="noopener noreferrer">HealthHub：均衡饮食</a></div></details>
+    </section>
+    <section class="care" aria-labelledby="care-title">
+      <div class="care-heading"><div><p class="section-index">03 / 个人饮食提醒</p><h2 id="care-title">记住自己的偏好和感受</h2></div><span class="habit-label">按个人习惯提醒</span></div>
+      <div class="care-grid">
+        <article class="care-card"><span class="card-number">01</span><div><h3>冰饮先放一放</h3><p>今天不喝冰饮料，换成常温水或温饮。舒服的温度，由你决定。</p><span class="care-tag">冰奶茶 · 冰咖啡 · 冰汽水</span></div></article>
+        <article class="care-card"><span class="card-number">02</span><div><h3>水果，按自己的感受选择</h3><p>提醒暂时避开你认为偏凉、或吃后容易不适的水果。</p><label class="fruit-label" for="fruits">想提醒自己少吃的水果（可选）</label><input id="fruits" type="text" maxlength="100" placeholder="填写你的个人清单，用逗号分隔"><p class="fruit-note">“凉性”属于传统饮食分类，并非医学禁忌；不需要一概禁食水果。</p></div></article>
+      </div>
+    </section>
+    <section class="calendar-export" aria-labelledby="export-title"><div><p class="section-index">04 / 手机提醒</p><h2 id="export-title">让日历帮你记住</h2><p>导出未来 3 个预计周期的经前 7 天提醒，并附当天可选搭配。</p><label class="check-label"><input id="include-during" type="checkbox" checked>同时加入预计经期中的饮食提醒</label><p class="export-estimate">经期提醒按持续天数估算；若已在经期中，也会加入本次剩余天数。</p></div><button id="export" class="secondary" disabled>导出日历提醒</button><div class="export-help"><p id="export-status" role="status" aria-live="polite">保存周期后即可导出 .ics 日历文件。</p><p>导入手机日历后，请确认事件包含提醒，并开启日历通知。网页关闭后不会自行推送。修改周期后需重新导出，先删除旧提醒，以免重复。</p></div></section>
+    <aside class="health-note"><div class="note-mark">i</div><div><h3>关心身体，也尊重身体的感受</h3><p>避开冰饮或特定水果是个人习惯，不保证减轻痛经。热敷、温水浴和轻柔运动可帮助缓解不适。如果疼痛影响日常生活、越来越重，或出现异常出血，请及时就医。</p><a href="https://www.nhs.uk/symptoms/period-pain/" target="_blank" rel="noopener noreferrer">阅读 NHS 痛经照护建议</a></div></aside>
+  </main>
+  <footer><span>暖期 · 留一点温柔给自己</span><button id="clear" class="text-button">清除本机记录</button></footer>
+</div>
+<dialog id="clear-dialog"><h2>清除本机记录？</h2><p>这会删除此浏览器保存的经期和饮食设置。已导入日历的提醒需要在日历中删除。</p><div class="dialog-actions"><button id="cancel-clear" class="secondary">保留记录</button><button id="confirm-clear" class="primary">清除记录</button></div></dialog>
+</body></html>
